@@ -4,17 +4,16 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel security-check open-src lint-watch",
+    "start": "npm-run-all --parallel security-check open-src lint-watch localtunnel test-watch",
     "open-src": "babel-node buildScripts/srcServer.js",
     "security-check": "nsp check",
     "localtunnel": "lt --port 3000 --subdomain environmenttest",
     "eslint": "esw webpack.config.* src buildScripts --color",
     "lint-watch":"npm run eslint -- --watch",
     "share": "npm-run-all --parallel open-src localtunnel",
-    "test": "mocha --reporter spec buildScripts/testSetup.js \"src/**/*.test.js\""
+    "test": "mocha --reporter spec buildScripts/testSetup.js \"src/**/*.test.js\"",
+    "test-watch": "npm run test -- --watch"
   },
-  "author": "Cory House",
-  "license": "MIT",
   "dependencies": {
     "whatwg-fetch": "1.0.0"
   },
